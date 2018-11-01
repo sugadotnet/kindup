@@ -1,0 +1,48 @@
+﻿@model APPBASE.Models.LHStudentVM
+@using APPBASE.Helpers
+@using APPBASE.Svcbiz
+@using APPBASE.Svcutil
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th></th>
+            <th><input type="text" id="searchValue" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Filter Data"/></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Model.LISTITEM_STUDENT == null)
+        {
+            <tr>
+                <td></td>
+                <td align="center"></td>
+            </tr>
+        }
+        @if (Model.LISTITEM_STUDENT != null)
+        {
+            foreach (var item in Model.LISTITEM_STUDENT)
+            {
+                    
+                <tr>
+                    <td class="SEARCHABLE_ROWS">
+                        <div style="display:inline-block; vertical-align:top;">
+                            <img src="@Url.Content("~/")@Utility_FileUploadDownload.getImage_Student(item.STUDENT_IMG)" alt="user image" class="small-circle"/>
+                        </div>
+                        <div style="display:inline-block;">
+                            <div> Cabang&nbsp;&nbsp;&nbsp;: @Html.DisplayFor(modelitem => item.BRANCH_DESC)</div>
+                            <div> Kelas&nbsp;&nbsp;&nbsp;&nbsp;: @Html.DisplayFor(modelitem => item.CLASSTYPE_DESC)</div>
+                            <div> Kelompok&nbsp;: @Html.DisplayFor(modelitem => item.CLASSROOM_NAME)</div>
+                            <div> Nama&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: @Html.DisplayFor(modelitem => item.NAME)</div>
+                        </div>
+                        
+                    </td>
+                    <td>
+                        <button value="@item.ID" type="button" class="btn btn-warning btn-flat btnCreate"><i class="fa  fa-plus"></i> Buat</button>
+                        <button value="@item.ID"  type="button" class="btn btn-success btn-flat btnEdit"><i class="fa  fa-edit"></i> Edit</button>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

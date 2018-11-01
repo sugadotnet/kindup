@@ -1,0 +1,37 @@
+﻿@model APPBASE.Models.SkhstudentVM
+@using APPBASE.Helpers
+@using APPBASE.Svcbiz
+
+
+<div class="box box-solid">
+    <div class="box-header"></div>
+    <div class="box-bodi">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th><input type="text" id="searchValue" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Filter Data"/></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @if (Model.LISTSKH == null) {
+                    <tr>
+                        <td colspan="2" align="center">@{Html.RenderPartial("_PartialEmpty");}</td>
+                    </tr>
+                }
+
+                @foreach (var item in Model.LISTSKH)
+                {
+                    
+                    <tr>
+                        <td class="SEARCHABLE_ROWS" colspan="2">
+                            <button type="button" id="@item.ID" name="@item.ID" class="btn btn-success btn-flat VIEW_SKHSTUDENT_LIST"><i class="fa  fa-external-link"></i></button>
+                            @Html.DisplayFor(modelItem => item.ACTIVITY) (Media : @Html.DisplayFor(modelItem => item.MEDIA) )
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

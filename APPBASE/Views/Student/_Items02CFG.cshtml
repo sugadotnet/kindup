@@ -1,0 +1,49 @@
+﻿@model APPBASE.Models.StudentVM
+@using APPBASE.Helpers
+@using APPBASE.Svcbiz
+
+@{string vsErrClass = "";}
+@{string vsDisableButton = "";}
+@{string vsDateFormat = "'alias': 'dd/mm/yyyy'";}
+
+
+<div class="row">
+    <div class="col-xs-5">
+        <span class="pull-left">Cabang</span>
+        <span class="pull-right">:</span>
+    </div> <!-- ./ -->
+    <div class="col-xs-7">
+        @Model.DETAIL.BRANCH_DESC
+    </div> <!-- ./ -->
+</div><!-- /.row -->
+
+<div class="row">
+    <div class="col-xs-5">
+        <span class="pull-left">Nomor Formulir</span>
+        <span class="pull-right">:</span>
+    </div> <!-- ./ -->
+    <div class="col-xs-7">
+        @Model.DETAIL.REGNO
+    </div> <!-- ./ -->
+</div><!-- /.row -->
+
+<div class="row">
+    <div class="col-xs-5">
+        <span class="pull-left">Tahun Ajaran</span>
+        <span class="pull-right">:</span>
+    </div> <!-- ./ -->
+    <div class="col-xs-7">
+        @Model.DETAIL.YEAR_DESC
+    </div> <!-- ./ -->
+</div><!-- /.row -->
+
+<div class="row">
+    <div class="col-xs-5">
+        <span class="pull-left">Kelas yang diikuti</span>
+        <span class="pull-right">:</span>
+    </div> <!-- ./ -->
+    <div class="col-xs-7">
+        @Model.DETAIL.CLASSTYPE_DESC
+    </div> <!-- ./ -->
+</div><!-- /.row -->
+<br />

@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Rincian Pembayaran Uang Pendaftaran";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section includeBOTTOM {
+    @Scripts.Render("~/bundles/JSInputMask")
+}
+
+
+<div class="row">
+    <div class="col-sm-12 col-md-3">
+        @{Html.RenderPartial("Rincian_input");}        
+    </div> <!-- End col -->
+    <div class="col-sm-12 col-md-9">
+        @{Html.RenderPartial("Rincian_hist");}        
+    </div> <!-- End col -->
+</div> <!-- End row -->
+
+
+
+
+<!-- Modal -->
+@{Html.RenderPartial("_PartialDialogLookup");}
+
+
+@section scripts {
+
+<!-- Modal -->
+@{Html.RenderPartial("Rincian_Events");}
+
+}

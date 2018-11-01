@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section includeBOTTOM {
+    @Scripts.Render("~/bundles/JSInputMask")
+}
+
+<div class="col-sm-12 col-md-6">
+    @using (Html.BeginForm("Index", "Skhstudent", FormMethod.Post, new { id = "frmGOTOIndex" }))
+    {
+        Html.RenderPartial("Filter");
+    }
+</div> <!-- /.col-sm-12 col-md-6 -->
+
+<div class="col-sm-12 col-md-6">
+    @using (Html.BeginForm("Delete", "Skhstudent", FormMethod.Post, new { id = "frmInput" }))
+    {
+        <input type="hidden" id="FILTER_ACTION_TYPE" name="FILTER_ACTION_TYPE" value="@Model.FILTER_ACTION_TYPE"/>
+        <input type="hidden" id="FILTER_SKH_ID" name="FILTER_SKH_ID" value="@Model.FILTER_SKH_ID"/>
+        <input type="hidden" id="FILTER_SKHSTUDENT_ID" name="FILTER_SKHSTUDENT_ID" value="@Model.FILTER_SKHSTUDENT_ID"/>
+        Html.RenderPartial("Delete_");
+    }
+</div> <!-- /.col-sm-12 col-md-6 -->
+
+@section scripts {
+
+<!-- Modal -->
+@{Html.RenderPartial("_Events");}
+
+}

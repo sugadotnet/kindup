@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Revisi Pembayaran SPP";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+@section includeBOTTOM {
+    @Scripts.Render("~/bundles/JSInputMask")
+}
+
+
+<div class="row">
+    <div class="col-sm-12 col-md-6">
+        @{Html.RenderPartial("Edit_input");}        
+    </div> <!-- End col -->
+</div> <!-- End row -->
+
+
+@section scripts {
+
+<!-- Modal -->
+@{Html.RenderPartial("_Events");}
+
+}

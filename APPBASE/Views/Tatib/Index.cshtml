@@ -1,0 +1,38 @@
+﻿@model IEnumerable<APPBASE.Models.AboutuslistVM>
+@using APPBASE.Helpers
+@using APPBASE.Svcbiz
+
+@{
+    ViewBag.Title = "TATA TERTIB";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{string vsClassBP_STS = "";}
+
+
+
+<section class="content invoice tatib">
+    @{Html.RenderPartial("_Page1");}
+</section> <!-- Page1 -->
+<div class="breakhear"></div>
+<section class="content invoice tatib">
+    @{Html.RenderPartial("_Page2");}
+</section> <!-- Page1 -->
+
+
+@section scripts {
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        /*=========================================
+        INITIALIZE
+        =========================================*/
+        doSearchAbleTable('#searchValue', '', '.SEARCHABLE_ROWS');
+
+        /*=========================================
+        EVENTS
+        =========================================*/
+    });   //End $(document).ready
+</script>
+
+}

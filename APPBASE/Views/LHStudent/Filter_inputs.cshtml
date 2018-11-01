@@ -1,0 +1,91 @@
+﻿@model APPBASE.Models.LHStudentVM
+@using APPBASE.Helpers
+
+@{string vsErrClass = "";}
+@{string vsDisableButton = "";}
+@{Boolean isShowDropdown = true;}
+@{string vsReadonlyTextboxKey = "Readonly";}
+@{string vsReadonlyTextbox = "";}
+@if (ViewBag.CRUD_type == hlpFlags_CRUDOption.CREATE) { vsReadonlyTextboxKey = ""; }
+@if ((ViewBag.CRUD_type == hlpFlags_CRUDOption.VIEW) || (ViewBag.CRUD_type == hlpFlags_CRUDOption.DELETE)) { vsDisableButton = "disabled"; vsReadonlyTextbox = "Readonly"; isShowDropdown = false; }
+@{string vsDateFormat = "'alias': 'dd/mm/yyyy'";}
+
+
+<input type="hidden" id="FILTER_ACTION_TYPE" name="FILTER_ACTION_TYPE" />
+<input type="hidden" id="FILTER_ID" name="FILTER_ID" />
+<div class="row">
+    <div class="col-sm-12 col-md-4">
+        @if (ViewData.ModelState["FILTER_DATE0"] != null) { vsErrClass = "has-error"; } else { vsErrClass = ""; }
+        <div class="form-group @vsErrClass">
+            <label for="FILTER_DATE">Tanggal</label>
+            <input type="text" id="FILTER_DATE" name="FILTER_DATE" value="@Html.DisplayFor(model => model.FILTER_DATE)" class="form-control" @vsReadonlyTextbox data-inputmask="@vsDateFormat" data-mask />
+
+            
+            @if (ViewData.ModelState["FILTER_DATE1"] != null)
+            {
+                    <label class="control-label" for="inputError">
+                    <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("FILTER_DATE1")
+                    </label>
+            }
+            @if (ViewData.ModelState["FILTER_DATE2"] != null)
+            {
+                    <label class="control-label" for="inputError">
+                    <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("FILTER_DATE2")
+                    </label>
+            }
+        </div> <!-- /.form-group -->
+    </div> <!-- /.col-sm-12 col-md-4 -->
+    
+    <div class="col-sm-12 col-md-4">
+        @if (ViewData.ModelState["FILTER_CLASSTYPE_ID0"] != null) { vsErrClass = "has-error"; } else { vsErrClass = ""; }
+        <div class="form-group @vsErrClass">
+            <label for="FILTER_CLASSTYPE_ID">Kelas</label>
+                <select id="FILTER_CLASSTYPE_ID" name="FILTER_CLASSTYPE_ID" class="form-control select2" data-placeholder="Select Kelas" style="width: 100%;" @vsReadonlyTextbox>
+                    <option selected value=""></option>
+                    @foreach (var item in ViewBag.CLASSTYPE)
+                    {
+
+                        if (Model.FILTER_CLASSTYPE_ID == item.ID) {<option selected value="@item.ID">@item.CLASSTYPE_NAME</option> }
+                        else {<option value="@item.ID">@item.CLASSTYPE_NAME</option> }
+                    }
+                </select>
+
+            @if (ViewData.ModelState["FILTER_CLASSTYPE_ID1"] != null)
+            {
+                    <label class="control-label" for="inputError">
+                    <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("FILTER_CLASSTYPE_ID1")
+                    </label>
+            }
+            @if (ViewData.ModelState["FILTER_CLASSTYPE_ID2"] != null)
+            {
+                    <label class="control-label" for="inputError">
+                    <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("FILTER_CLASSTYPE_ID2")
+                    </label>
+            }
+        </div> <!-- /.form-group -->
+    </div> <!-- /.col-sm-12 col-md-4 -->
+
+    <div class="col-sm-12 col-md-4">
+        @if (ViewData.ModelState["FILTER_CLASSROOM_ID0"] != null) { vsErrClass = "has-error"; } else { vsErrClass = ""; }
+        <div class="form-group @vsErrClass">
+            <label for="FILTER_CLASSROOM_ID">Kelompok</label>
+                <select id="FILTER_CLASSROOM_ID" name="FILTER_CLASSROOM_ID" class="form-control" data-placeholder="Select Kelompok" style="width: 100%;" @vsReadonlyTextbox>
+                    <option selected value=""></option>
+                </select>
+
+            @if (ViewData.ModelState["FILTER_CLASSROOM_ID1"] != null)
+            {
+                    <label class="control-label" for="inputError">
+                    <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("FILTER_CLASSROOM_ID1")
+                    </label>
+            }
+            @if (ViewData.ModelState["FILTER_CLASSROOM_ID2"] != null)
+            {
+                    <label class="control-label" for="inputError">
+                    <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("FILTER_CLASSROOM_ID2")
+                    </label>
+            }
+        </div> <!-- /.form-group -->
+    </div> <!-- /.col-sm-12 col-md-4 -->
+</div><!-- /.row -->
+

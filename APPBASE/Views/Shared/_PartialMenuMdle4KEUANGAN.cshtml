@@ -1,0 +1,18 @@
+﻿@using APPBASE.Helpers
+
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-bars"></i> <span>KEUANGAN</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="@Url.Action("Index", "Transaction_inreg")"><i class="fa fa-angle-double-right"></i> Pendaftaran</a></li>
+            <li><a href="@Url.Action("Rincian", "Transaction_inreg")"><i class="fa fa-angle-double-right"></i> Rincian Pendaftaran</a></li>
+            <li><a href="@Url.Action("Rekap", "Transaction_inreg")"><i class="fa fa-angle-double-right"></i> Rekap Pendaftaran</a></li>
+            <li><hr /></li>
+            <li><a href="@Url.Action("Index", "Transaction_inspp")"><i class="fa fa-angle-double-right"></i> SPP</a></li>
+            <li><a href="@Url.Action("Rincian", "Transaction_inspp")"><i class="fa fa-angle-double-right"></i> Rincian SPP</a></li>
+            <li><a href="@Url.Action("Rekap", "Transaction_inspp")"><i class="fa fa-angle-double-right"></i> Rekap SPP</a></li>
+            <li><a href="@Url.Action("Tunggakan", "Transaction_inspp")"><i class="fa fa-angle-double-right"></i> Checklist SPP</a></li>
+        </ul>
+    </li>

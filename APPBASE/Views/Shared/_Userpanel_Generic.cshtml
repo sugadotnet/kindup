@@ -1,0 +1,29 @@
+﻿@using APPBASE.Helpers
+@using APPBASE.Svcutil
+@using APPBASE.Svcbiz
+@using APPBASE.Models
+
+<!-- Sidebar user panel -->
+<div class="user-panel">
+    <div class="pull-left image">
+        <img src="@Url.Content("~/")@hlpConfig.SessionInfo.getAppResIMG()" class="img-circle" alt="Foto User" />
+    </div>
+    <div class="pull-left info">
+        @if ((hlpConfig.SessionInfo.getAppUserdisplayname() != "") && (hlpConfig.SessionInfo.getAppUserdisplayname() != null))
+        {
+            <p>@hlpConfig.SessionInfo.getAppUserdisplayname()</p>
+        }
+        else
+        {
+            <p>Apakabar, @hlpConfig.SessionInfo.getAppUsername()</p>
+        }
+                            
+        <p>@hlpConfig.SessionInfo.getAppResinfo1()</p>
+
+        @if (hlpConfig.SessionInfo.getAppRoleId() == valFLAG.FLAG_ROLE_P)
+        { <a href="#"><i class="fa fa-circle text-success"></i> @hlpConfig.SessionInfo.getAppResinfo3()</a> }
+        @if (hlpConfig.SessionInfo.getAppRoleId() == valFLAG.FLAG_ROLE_CT)
+        { <a href="#"><i class="fa fa-circle text-success"></i> @hlpConfig.SessionInfo.getAppResinfo2()</a> }
+
+    </div>
+</div>

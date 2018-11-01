@@ -1,0 +1,39 @@
+﻿@using APPBASE.Helpers
+@using APPBASE.Svcutil
+@using APPBASE.Svcbiz
+@using APPBASE.Models
+
+<!-- Sidebar user panel -->
+<div class="user-panel">
+    <a href="@Url.Action("View", "Student", new { id = hlpConfig.SessionInfo.getAppResId() })">
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="pull-left image">
+                    <img src="@Url.Content("~/")@hlpConfig.SessionInfo.getAppResIMG()" class="img-circle" alt="Foto User" />
+                </div>
+            </div>
+
+            <div class="col-xs-8">
+                <div class="pull-left info">
+                    @if ((hlpConfig.SessionInfo.getAppUserdisplayname() != "") && (hlpConfig.SessionInfo.getAppUserdisplayname() != null))
+                    {
+                        <p>@hlpConfig.SessionInfo.getAppUserdisplayname()</p>
+                    }
+                    else
+                    {
+                        <p>Apakabar, @hlpConfig.SessionInfo.getAppUsername()</p>
+                    }
+                            
+                    <div><i class="fa fa-circle text-success"></i> @hlpConfig.SessionInfo.getAppResinfo1()</div>
+
+                    <div>
+                        @if (hlpConfig.SessionInfo.getAppRoleId() == valFLAG.FLAG_ROLE_P)
+                        { <div><i class="fa fa-circle text-success"></i> @hlpConfig.SessionInfo.getAppResinfo3()</div> }
+                        @if (hlpConfig.SessionInfo.getAppRoleId() == valFLAG.FLAG_ROLE_CT)
+                        { <div><i class="fa fa-circle text-success"></i> @hlpConfig.SessionInfo.getAppResinfo2()</div> }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>

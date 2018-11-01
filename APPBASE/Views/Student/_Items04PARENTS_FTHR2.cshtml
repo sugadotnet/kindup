@@ -1,0 +1,51 @@
+﻿@model APPBASE.Models.StudentVM
+@using APPBASE.Helpers
+@using APPBASE.Svcbiz
+
+@{string vsErrClass = "";}
+@{string vsDisableButton = "";}
+@{string vsDateFormat = "'alias': 'dd/mm/yyyy'";}
+
+
+<!-- ---------------------------------------------------------------- -->
+
+<div class="row">
+    <div class="col-xs-5">
+        <span class="pull-left indent">Agama</span>
+        <span class="pull-right">:</span>
+    </div> <!-- ./ -->
+    <div class="col-xs-7">
+        @Model.DETAIL.FTHR_RELIGION_DESC
+    </div> <!-- ./ -->
+</div><!-- /.row -->
+
+<div class="row">
+    <div class="col-xs-5">
+        <span class="pull-left indent">Pendidikan Terakhir</span>
+        <span class="pull-right">:</span>
+    </div> <!-- ./ -->
+    <div class="col-xs-7">
+        @Model.DETAIL.FTHR_EDU_DESC
+    </div> <!-- ./ -->
+</div><!-- /.row -->
+
+<div class="row">
+    <div class="col-xs-5">
+        <span class="pull-left indent">Pekerjaan/Jabatan</span>
+        <span class="pull-right">:</span>
+    </div> <!-- ./ -->
+    <div class="col-xs-7">
+        @Model.DETAIL.FTHR_JOB_DESC
+    </div> <!-- ./ -->
+</div><!-- /.row -->
+
+<div class="row">
+    <div class="col-xs-5">
+        <span class="pull-left indent">Alamat Kantor</span>
+        <span class="pull-right">:</span>
+    </div> <!-- ./ -->
+    <div class="col-xs-7">
+        <div>@Model.DETAIL.FTHR_JOB_ADDR1</div>
+        <div>@Model.DETAIL.FTHR_JOB_ADDR2</div>
+    </div> <!-- ./ -->
+</div><!-- /.row -->

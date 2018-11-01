@@ -1,0 +1,27 @@
+﻿/****************************************************
+ * Page Style
+ ****************************************************/
+
+/* 
+    Page: Pagesetup
+*/
+.Pagesetup {
+  position: relative;
+  width: 90%;
+  margin: 10px auto;
+  background: #fff;
+  border: 1px solid #f4f4f4;
+  color:Red;
+}
+.Pagesetup-title {
+  margin-top: 0;
+}
+
+/* Enhancement for printing */
+@media print {
+  page[size="A4"] {  
+      width: 21cm;
+      height: 29.7cm; 
+  }
+  
+}

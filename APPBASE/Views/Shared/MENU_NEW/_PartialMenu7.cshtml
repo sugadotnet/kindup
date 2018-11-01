@@ -1,0 +1,30 @@
+﻿@using APPBASE.Helpers
+
+<!-- 7 = P	PARENT  -->
+
+<!-- AKADEMIK -->
+    <li><a href="@Url.Action("Index", "LHStudent")"><i class="fa fa-angle-double-right"></i> Laporan Harian Siswa</a></li>
+
+<!-- ADMINISTRASI -->
+    <li><a href="@Url.Action("Index", "Announcement")"><i class="fa fa-angle-double-right"></i> Pengumuman</a></li>
+
+<!-- INFO SEKOLAH -->
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-lightbulb-o"></i> <span>INFO SEKOLAH</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="@Url.Action("Index", "Tatib")"><i class="fa fa-angle-double-right"></i> Tata Tertib Sekolah</a></li>
+            <li><a href="@Url.Action("Index", "Song")"><i class="fa fa-angle-double-right"></i> Lagu lagu</a></li>
+            <li><a href="@Url.Action("Index", "Doa")"><i class="fa fa-angle-double-right"></i> Daftar Doa</a></li>
+            <li><a href="@Url.Action("ErrorDEV", "Error")"><i class="fa fa-angle-double-right"></i> Daftar Hadist*</a></li>
+        </ul>
+    </li>
+
+<!-- ADMINISTRASI -->
+    <li><a href="@Url.Action("Index", "Photogallery")"><i class="fa fa-angle-double-right"></i> Galeri Foto</a></li>
+
+
+<!-- MANAJEMEN -->
+    <li><a href="@Url.Action("Index", "Suggest")"><i class="fa fa-angle-double-right"></i> Saran Orang Tua</a></li>

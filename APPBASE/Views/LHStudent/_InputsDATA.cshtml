@@ -1,0 +1,92 @@
+﻿@model APPBASE.Models.LHStudentVM
+@using APPBASE.Helpers
+
+@{string vsErrClass = "";}
+@{string vsDisableButton = "";}
+@{Boolean isShowDropdown = true;}
+@{string vsReadonlyTextboxKey = "Readonly";}
+@{string vsReadonlyTextbox = "";}
+@if (ViewBag.CRUD_type == hlpFlags_CRUDOption.CREATE) { vsReadonlyTextboxKey = ""; }
+@if ((ViewBag.CRUD_type == hlpFlags_CRUDOption.VIEW) || (ViewBag.CRUD_type == hlpFlags_CRUDOption.DELETE)) { vsDisableButton = "disabled"; vsReadonlyTextbox = "Readonly"; isShowDropdown = false; }
+@{string vsDateFormat = "'alias': 'dd/mm/yyyy'";}
+
+<div class="row">
+    <div class="col-xs-12">
+        @if (ViewData.ModelState["LH_DT0"] != null) { vsErrClass = "has-error"; } else { vsErrClass = ""; }
+        <div class="form-group @vsErrClass">
+            <label for="LH_DT">Tanggal</label>
+            <input type="text" id="LH_DT" name="DETAIL.LH_DT" value="@Html.DisplayFor(model => model.DETAIL.LH_DT)" class="form-control" @vsReadonlyTextbox data-inputmask="@vsDateFormat" data-mask />
+
+            
+            @if (ViewData.ModelState["LH_DT1"] != null)
+            {
+                    <label class="control-label" for="inputError">
+                    <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("LH_DT1")
+                    </label>
+            }
+            @if (ViewData.ModelState["LH_DT2"] != null)
+            {
+                    <label class="control-label" for="inputError">
+                    <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("LH_DT2")
+                    </label>
+            }
+        </div> <!-- /.form-group -->
+    </div> <!-- /.col-xs-12 -->
+</div><!-- /.row -->
+
+<div class="row">
+    <div class="col-xs-12">
+        @if (ViewData.ModelState["LH_NOTES0"] != null) { vsErrClass = "has-error"; } else { vsErrClass = ""; }
+        <div class="form-group @vsErrClass">
+            <label for="LH_NOTES">Catatan Guru</label>
+            <textarea id="LH_NOTES" name="DETAIL.LH_NOTES" class="form-control" maxlength="300" @vsReadonlyTextbox>@Html.DisplayFor(model => model.DETAIL.LH_NOTES)</textarea>
+
+
+            @if (ViewData.ModelState["LH_NOTES1"] != null)
+            {
+                    <label class="control-label" for="inputError">
+                    <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("LH_NOTES1")
+                    </label>
+            }
+            @if (ViewData.ModelState["LH_NOTES2"] != null)
+            {
+                    <label class="control-label" for="inputError">
+                    <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("LH_NOTES2")
+                    </label>
+            }
+        </div> <!-- /.form-group -->
+    </div> <!-- /.col-xs-12 -->
+</div><!-- /.row -->
+
+<div class="row">
+    <div class="col-xs-12">
+        @if (ViewData.ModelState["MOOD_ID0"] != null) { vsErrClass = "has-error"; } else { vsErrClass = ""; }
+        <div class="form-group @vsErrClass">
+            <label for="MOOD_ID">Mood of The Day</label>
+            <div>
+            @foreach (var item in ViewBag.MOOD)
+            {
+                <label>
+                    @if (Model.DETAIL.MOOD_ID == item.ID)
+                    {<input type="radio" id="MOOD_ID" name="DETAIL.MOOD_ID" value="@item.ID" class="flat-red" checked/> @item.LOV_DESC }
+                    else
+                    {<input type="radio" id="MOOD_ID" name="DETAIL.MOOD_ID" value="@item.ID" class="flat-red"/> @item.LOV_DESC }
+                </label>
+            }
+            </div>
+            @if (ViewData.ModelState["MOOD_ID1"] != null)
+            {
+                    <label class="control-label" for="inputError">
+                    <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("MOOD_ID1")
+                    </label>
+            }
+            @if (ViewData.ModelState["MOOD_ID2"] != null)
+            {
+                    <label class="control-label" for="inputError">
+                    <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("MOOD_ID2")
+                    </label>
+            }
+        </div> <!-- /.form-group -->
+    </div> <!-- /.col-xs-12 -->
+</div><!-- /.row -->
+

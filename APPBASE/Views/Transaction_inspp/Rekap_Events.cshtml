@@ -1,0 +1,18 @@
+﻿<script type="text/javascript">
+    $(document).ready(function () {
+        /*=========================================
+        INITIALIZE
+        =========================================*/
+        $("[data-mask]").inputmask(); //Optional if contains date field(s)
+        inputDecimal();
+
+        /*=========================================
+        EVENTS
+        =========================================*/
+        $(".data-mask-decimal").focusout(function () {
+            formatNumberDecimal("#" + $(this).attr("id"));
+        });
+
+    }); //End $(document).ready
+</script>
+

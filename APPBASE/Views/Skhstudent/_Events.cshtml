@@ -1,0 +1,236 @@
+﻿<script type="text/javascript">
+    $(document).ready(function () {
+        /*=========================================
+        INITIALIZE
+        =========================================*/
+        doSearchAbleTable('#searchValue', '', '.SEARCHABLE_ROWS');
+        $("[data-mask]").inputmask(); //Optional if contains date field(s)
+        inputInteger();
+
+        /*=========================================
+        EVENTS
+        =========================================*/
+        //Command button reset
+        $("#reset").click(function () {
+            $("#FILTER_YEAR_ID").val("");
+            $("#FILTER_YEAR_DESC").val("");
+
+            $("#FILTER_SEMESTER_ID").val("");
+            $("#FILTER_SEMESTER_DESC").val("");
+
+            $("#FILTER_CLASSTYPE_ID").val("");
+            $("#FILTER_CLASSTYPE_DESC").val("");
+
+            $("#FILTER_WEEKNUM").val("");
+            $("#FILTER_DATEFROM").val("");
+        }); //End  $("#btnLookup").click
+
+        //Command submit create
+        $("#BTN_VIEWLIST").click(function () {
+            $('#FILTER_ACTION_TYPE').val("");
+            $('form#frmGOTOIndex').submit();
+        }); //End  $("#btnLookup").click
+        //Command submit create
+        $("#BTN_CREATE").click(function () {
+            $('#FILTER_ACTION_TYPE').val("1");
+            $('form#frmGOTOIndex').submit();
+        }); //End  $("#btnLookup").click
+        //Command submit edit
+        $("#BTN_EDIT").click(function () {
+            $('#FILTER_ACTION_TYPE').val("21");
+            $('form#frmGOTODetails').submit();
+        }); //End  $("#btnLookup").click
+        //Command submit delete
+        $("#BTN_DELETE").click(function () {
+            $('#FILTER_ACTION_TYPE').val("22");
+            $('form#frmGOTODetails').submit();
+        }); //End  $("#btnLookup").click
+
+        $(".VIEW_SKHSTUDENT_LIST").click(function () {
+            $('#FILTER_ACTION_TYPE').val("");
+            $('#FILTER_SKH_ID').val($(this).prop('id'));
+            $('form#frmGOTOIndex').submit();
+        }); //End  $("#btnLookup").click
+        $(".VIEW_SKHSTUDENT_DETAIL").click(function () {
+            $('#FILTER_ACTION_TYPE').val("2");
+            $('#FILTER_SKHSTUDENT_ID').val($(this).prop('id'));
+            $('form#frmGOTOIndex').submit();
+        }); //End  $("#btnLookup").click
+
+        /*=========================================
+        EVENTS LOOKUP FILTER
+        =========================================*/
+        //Command LookUp [FILTER_YEAR_ID]
+        $("#cmdLookupFILTER_YEAR_ID").click(function () {
+            var vaSearchValue = new Array();
+            vaSearchValue[0] = "";
+            //            vaSearchValue[1] = "Data array 2";
+            //            vaSearchValue[2] = "Data array 3";
+            var vaTargetTag = new Array();
+            vaTargetTag[0] = 'FILTER_YEAR_ID'; //ID
+            vaTargetTag[1] = '';   //CD
+            vaTargetTag[2] = 'FILTER_YEAR_DESC'; //DESC
+            showLookup('Lookup/ShowYear', '', vaSearchValue, vaTargetTag);
+        }); //End  $("#btnLookup").click
+        //Command LookUp [FILTER_SEMESTER_ID]
+        $("#cmdLookupFILTER_SEMESTER_ID").click(function () {
+            var vaSearchValue = new Array();
+            vaSearchValue[0] = "";
+            //            vaSearchValue[1] = "Data array 2";
+            //            vaSearchValue[2] = "Data array 3";
+            var vaTargetTag = new Array();
+            vaTargetTag[0] = 'FILTER_SEMESTER_ID'; //ID
+            vaTargetTag[1] = '';   //CD
+            vaTargetTag[2] = 'FILTER_SEMESTER_DESC'; //DESC
+            showLookup('Lookup/ShowSemester', '', vaSearchValue, vaTargetTag);
+        }); //End  $("#btnLookup").click
+        //Command LookUp [FILTER_CLASSTYPE_ID]
+        $("#cmdLookupFILTER_CLASSTYPE_ID").click(function () {
+            var vaSearchValue = new Array();
+            vaSearchValue[0] = "";
+            //            vaSearchValue[1] = "Data array 2";
+            //            vaSearchValue[2] = "Data array 3";
+            var vaTargetTag = new Array();
+            vaTargetTag[0] = 'FILTER_CLASSTYPE_ID'; //ID
+            vaTargetTag[1] = '';   //CD
+            vaTargetTag[2] = 'FILTER_CLASSTYPE_DESC'; //DESC
+            showLookup('Lookup/ShowClasstype', '', vaSearchValue, vaTargetTag);
+        }); //End  $("#btnLookup").click
+        //Command LookUp [FILTER_THEME_ID]
+        $("#cmdLookupFILTER_THEME_ID").click(function () {
+            var vaSearchValue = new Array();
+            vaSearchValue[0] = "";
+            //            vaSearchValue[1] = "Data array 2";
+            //            vaSearchValue[2] = "Data array 3";
+            var vaTargetTag = new Array();
+            vaTargetTag[0] = 'FILTER_THEME_ID'; //ID
+            vaTargetTag[1] = '';   //CD
+            vaTargetTag[2] = 'FILTER_THEME_DESC'; //DESC
+            showLookup('Lookup/ShowTheme', '', vaSearchValue, vaTargetTag);
+        }); //End  $("#btnLookup").click
+
+        /*=========================================
+        EVENTS LOOKUP
+        =========================================*/
+        //Command LookUp [STUDENT_ID]
+        $("#cmdLookupSTUDENT_ID").click(function () {
+            var vaSearchValue = new Array();
+            vaSearchValue[0] = "";
+            //            vaSearchValue[1] = "Data array 2";
+            //            vaSearchValue[2] = "Data array 3";
+            var vaTargetTag = new Array();
+            vaTargetTag[0] = 'STUDENT_ID'; //ID
+            vaTargetTag[1] = 'NIS';   //CD
+            vaTargetTag[2] = 'NAME'; //DESC
+            vaTargetTag[3] = ''; //DESC
+            showLookup('Lookup/ShowStudent', '', vaSearchValue, vaTargetTag);
+        }); //End  $("#btnLookup").click
+
+
+        //Command LookUp [SKH_ID]
+        $("#cmdLookupSKH_ID").click(function () {
+            var vaSearchValue = new Array();
+            vaSearchValue[0] = "";
+            //            vaSearchValue[1] = "Data array 2";
+            //            vaSearchValue[2] = "Data array 3";
+            var vaTargetTag = new Array();
+            vaTargetTag[0] = 'SKH_ID'; //ID
+            vaTargetTag[1] = 'ACTIVITY';   //CD
+            vaTargetTag[2] = 'INDICATOR'; //DESC
+            vaTargetTag[3] = 'MEDIA'; //DESC
+            showLookup('Lookup/ShowSkh', '', vaSearchValue, vaTargetTag);
+        }); //End  $("#btnLookup").click
+
+
+
+
+
+        //Command LookUp [RATEA_ID]
+        $("#cmdLookupRATEA_ID").click(function () {
+            var vaSearchValue = new Array();
+            vaSearchValue[0] = "";
+            //            vaSearchValue[1] = "Data array 2";
+            //            vaSearchValue[2] = "Data array 3";
+            var vaTargetTag = new Array();
+            vaTargetTag[0] = 'RATEA_ID'; //ID
+            vaTargetTag[1] = '';   //CD
+            vaTargetTag[2] = 'RATEA_DESC'; //DESC
+            showLookup('Lookup/ShowRate', '', vaSearchValue, vaTargetTag);
+        }); //End  $("#btnLookup").click
+        //Command LookUp [RATESE_ID]
+        $("#cmdLookupRATESE_ID").click(function () {
+            var vaSearchValue = new Array();
+            vaSearchValue[0] = "";
+            //            vaSearchValue[1] = "Data array 2";
+            //            vaSearchValue[2] = "Data array 3";
+            var vaTargetTag = new Array();
+            vaTargetTag[0] = 'RATESE_ID'; //ID
+            vaTargetTag[1] = '';   //CD
+            vaTargetTag[2] = 'RATESE_DESC'; //DESC
+            showLookup('Lookup/ShowRate', '', vaSearchValue, vaTargetTag);
+        }); //End  $("#btnLookup").click
+        //Command LookUp [RATEB_ID]
+        $("#cmdLookupRATEB_ID").click(function () {
+            var vaSearchValue = new Array();
+            vaSearchValue[0] = "";
+            //            vaSearchValue[1] = "Data array 2";
+            //            vaSearchValue[2] = "Data array 3";
+            var vaTargetTag = new Array();
+            vaTargetTag[0] = 'RATEB_ID'; //ID
+            vaTargetTag[1] = '';   //CD
+            vaTargetTag[2] = 'RATEB_DESC'; //DESC
+            showLookup('Lookup/ShowRate', '', vaSearchValue, vaTargetTag);
+        }); //End  $("#btnLookup").click
+        //Command LookUp [RATEK_ID]
+        $("#cmdLookupRATEK_ID").click(function () {
+            var vaSearchValue = new Array();
+            vaSearchValue[0] = "";
+            //            vaSearchValue[1] = "Data array 2";
+            //            vaSearchValue[2] = "Data array 3";
+            var vaTargetTag = new Array();
+            vaTargetTag[0] = 'RATEK_ID'; //ID
+            vaTargetTag[1] = '';   //CD
+            vaTargetTag[2] = 'RATEK_DESC'; //DESC
+            showLookup('Lookup/ShowRate', '', vaSearchValue, vaTargetTag);
+        }); //End  $("#btnLookup").click
+        //Command LookUp [RATEMH_ID]
+        $("#cmdLookupRATEMH_ID").click(function () {
+            var vaSearchValue = new Array();
+            vaSearchValue[0] = "";
+            //            vaSearchValue[1] = "Data array 2";
+            //            vaSearchValue[2] = "Data array 3";
+            var vaTargetTag = new Array();
+            vaTargetTag[0] = 'RATEMH_ID'; //ID
+            vaTargetTag[1] = '';   //CD
+            vaTargetTag[2] = 'RATEMH_DESC'; //DESC
+            showLookup('Lookup/ShowRate', '', vaSearchValue, vaTargetTag);
+        }); //End  $("#btnLookup").click
+        //Command LookUp [RATEMK_ID]
+        $("#cmdLookupRATEMK_ID").click(function () {
+            var vaSearchValue = new Array();
+            vaSearchValue[0] = "";
+            //            vaSearchValue[1] = "Data array 2";
+            //            vaSearchValue[2] = "Data array 3";
+            var vaTargetTag = new Array();
+            vaTargetTag[0] = 'RATEMK_ID'; //ID
+            vaTargetTag[1] = '';   //CD
+            vaTargetTag[2] = 'RATEMK_DESC'; //DESC
+            showLookup('Lookup/ShowRate', '', vaSearchValue, vaTargetTag);
+        }); //End  $("#btnLookup").click
+        //Command LookUp [RATES_ID]
+        $("#cmdLookupRATES_ID").click(function () {
+            var vaSearchValue = new Array();
+            vaSearchValue[0] = "";
+            //            vaSearchValue[1] = "Data array 2";
+            //            vaSearchValue[2] = "Data array 3";
+            var vaTargetTag = new Array();
+            vaTargetTag[0] = 'RATES_ID'; //ID
+            vaTargetTag[1] = '';   //CD
+            vaTargetTag[2] = 'RATES_DESC'; //DESC
+            showLookup('Lookup/ShowRate', '', vaSearchValue, vaTargetTag);
+        }); //End  $("#btnLookup").click
+
+
+    });    //End $(document).ready
+</script>
+

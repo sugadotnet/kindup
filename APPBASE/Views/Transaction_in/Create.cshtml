@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Tambah Transaksi Pembayaran";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section includeBOTTOM {
+    @Scripts.Render("~/bundles/JSInputMask")
+}
+
+@{string sControllername = "Transaction_in";}
+@{if (ViewBag.Controllername != null) { sControllername = ViewBag.Controllername; }}
+@using (Html.BeginForm("Create", sControllername, FormMethod.Post))
+{
+
+<div class="box box-info">
+    <div class="box-header">
+        <h3 class="box-title"></h3>
+    </div><!-- /.box-header -->
+    <div class="box-body">
+        @{Html.RenderPartial((string)ViewBag.Viewlocation + "_Inputs" + (string)ViewBag.Viewextention);}
+    </div><!-- /.box-body -->
+    <div class="box-footer">
+        <div class="row">
+            <div class="col-xs-12">
+                <button type="submit" class="btn btn-primary btn-flat">Simpan Data</button>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </div><!-- /.row -->
+    </div><!-- /.box-footer -->
+</div><!-- /.box -->
+    
+}
+
+<!-- Modal -->
+@{Html.RenderPartial("_PartialDialogLookup");}
+
+
+@section scripts {
+
+<!-- Modal -->
+@{Html.RenderPartial((string)ViewBag.Viewlocation + "_Events" + (string)ViewBag.Viewextention);}
+
+}

@@ -1,0 +1,24 @@
+﻿@using APPBASE.Helpers
+@using APPBASE.Svcbiz
+
+@{
+    ViewBag.Title = "Data Siswa";
+    Layout = "~/Views/Shared/_Layout2cols.cshtml";
+    //Layout = "~/Views/Shared/_LayoutPrintable.cshtml";
+}
+
+
+<section class="content page">
+    @{Html.RenderPartial("_Items01PAGEHEADER");}
+
+    @{Html.RenderPartial("_Items02CFG");}
+    @{Html.RenderPartial("_Items03PROFILE");}
+    @{Html.RenderPartial("_Items04PARENTS_FTHR1");}
+
+    @{Html.RenderPartial("_Items04PARENTS_FTHR2");}
+
+    @{Html.RenderPartial("_Items05PARENTS_MTHR1");}
+    @{Html.RenderPartial("_Items05PARENTS_MTHR2");}
+    @{Html.RenderPartial("_Items06AKADEMIK");}
+    @{Html.RenderPartial("_Items07PAGEFOOTER");}
+</section>

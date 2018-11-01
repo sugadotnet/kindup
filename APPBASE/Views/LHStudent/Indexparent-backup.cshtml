@@ -1,0 +1,61 @@
+﻿@model IEnumerable<APPBASE.Models.LHStudentdetailVM>
+@using APPBASE.Helpers
+@using APPBASE.Svcbiz
+@using APPBASE.Svcutil
+
+@{
+    ViewBag.Title = "Laporan Harian Siswa";
+    Layout = "~/Views/Shared/_Layout2cols.cshtml";
+}
+
+@{string vsClassBP_STS = "";}
+
+
+@foreach (var item in Model)
+{
+    <div class="box box-solid" style="background-color:#FFFF99;">
+        <div class="box-header">
+            <h3 class="box-title"></h3>
+        </div><!-- /.box-header -->
+
+        <div class="box-body">
+            <div class="row">
+                <div class="col-xs-12 col-md-4">
+                      <div class="image">
+                        <img id="imgSTUDENT_IMG" src="@Url.Content("~/")@Utility_FileUploadDownload.getImage_StudentNA()" class="img-circle" alt="Foto" />
+                      </div>
+                </div> <!-- ./col1 -->
+
+                <div class="col-xs-12 col-md-8">
+                    
+                    <div style="font-weight:bold;">@Html.DisplayFor(modelitem=>item.EMPLOYEE_NAME) - @Html.DisplayFor(modelitem=>item.SENTRA_NAME)</div>
+                    <p>@hlpConvertionAndFormating.ConvertDateToStringDateShortFmt(item.LH_DT)</p>
+
+                    
+                    <p><span style="font-style:italic;">Main Activity :</span> </p>
+                    <p>@Html.DisplayFor(modelitem=>item.LH_NOTES)</p>
+                    <div>Mood of the day : @Html.DisplayFor(modelitem=>item.MOOD_DESC)</div>
+                </div> <!-- ./col1 -->
+            </div> <!-- ./row -->
+        </div><!-- /.box-body -->
+
+    </div><!-- /.box -->
+    
+}
+
+@section scripts {
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        /*=========================================
+        INITIALIZE
+        =========================================*/
+        doSearchAbleTable('#searchValue', '', '.SEARCHABLE_ROWS');
+
+        /*=========================================
+        EVENTS
+        =========================================*/
+    });   //End $(document).ready
+</script>
+
+}

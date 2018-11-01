@@ -1,0 +1,54 @@
+﻿@model APPBASE.Models.PaymentVM
+
+@using APPBASE.Helpers
+@using APPBASE.Svcbiz
+@using APPBASE.Svcutil
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th rowspan="2" style="text-align:center; vertical-align:middle">Siswa</th>
+            <th colspan="12" style="text-align:center;">Bulan</th>
+        </tr>
+        <tr>
+            <th style="text-align:center;">Jul</th>
+            <th style="text-align:center;">Agt</th>
+            <th style="text-align:center;">Sep</th>
+            <th style="text-align:center;">Okt</th>
+            <th style="text-align:center;">Nov</th>
+            <th style="text-align:center;">Des</th>
+            <th style="text-align:center;">Jan</th>
+            <th style="text-align:center;">Feb</th>
+            <th style="text-align:center;">Mar</th>
+            <th style="text-align:center;">Apr</th>
+            <th style="text-align:center;">Mei</th>
+            <th style="text-align:center;">Jun</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Model.MONTHLY_LIST == null) {
+            <tr>
+                <td colspan="13" align="center">@{Html.RenderPartial("_PartialEmpty");}</td>
+            </tr>
+        }
+
+        @foreach (var item in Model.MONTHLY_LIST)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelitem=> item.STUDENT.NAME)</td>
+
+                @foreach (var item_month in item.MONTHS)
+                {
+                    if ((item_month.ISPAYED != null) && (item_month.ISPAYED == 1))
+                    {
+                        <td><i class="fa fa-check" style="color:Green; text-align:center;"></i></td>
+                    }
+                    else
+                    {<td></td> }
+
+                }
+            </tr>
+        }
+    </tbody>
+</table>

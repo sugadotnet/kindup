@@ -1,0 +1,56 @@
+﻿@model APPBASE.Models.Transaction_indetailVM
+
+@using APPBASE.Helpers
+@using APPBASE.Svcbiz
+@using APPBASE.Svcutil
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                <input type="text" id="searchValue" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Filter Data"/>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <div class="col-sm-1" style="text-align:center;"></div>
+                <div class="col-sm-2" style="text-align:center;">Tanggal</div>
+                <div class="col-sm-6" style="text-align:center;">Deskripsi</div>
+                <div class="col-sm-4" style="text-align:center;">Nominal</div>
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Model.HIST == null)
+        {
+            <tr>
+                <td align="center">Belum ada pembayaran</td>
+            </tr>
+        } <!-- End if -->
+
+        @if (Model.HIST != null)
+        {
+            if (Model.HIST.Count <= 0) {
+                <tr>
+                    <td align="center">Belum ada pembayaran</td>
+                </tr>
+            }
+
+            foreach (var item in Model.HIST.OrderByDescending(fld=>fld.ID).ToList())
+            {
+                    
+                <tr>
+                    <td class="SEARCHABLE_ROWS">
+                        <div class="row">
+                            <div class="col-sm-1"><a href="@Url.Action("Kwitansiprint", "Transaction_inreg", new { id = item.TRN_ID })" class="btn btn-flat btn-default"><i class="fa fa-print"></i></a></div>
+                            <div class="col-sm-2">@hlpConvertionAndFormating.ConvertDateToStringDateShortFmt(item.TRN_DT)</div>
+                            <div class="col-sm-6">@item.TRN_DESC</div>
+                            <div class="col-sm-3">Rp. <span class="pull-right">@hlpConvertionAndFormating.ConvertDecimalToStringFmtThousand(item.TRND_AMOUNT)</span></div>
+                        </div>
+                    </td>
+                </tr>
+            } <!-- End foreach -->
+        } <!-- End if -->
+    </tbody>
+</table>

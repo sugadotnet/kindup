@@ -1,0 +1,60 @@
+﻿@model APPBASE.Models.LHStudentVM
+@using APPBASE.Helpers
+@using APPBASE.Svcbiz
+
+@{
+    ViewBag.Title = "Daftar LHS";
+    if (hlpConfig.SessionInfo.getAppRoleId() == valFLAG.FLAG_ROLE_P) { Layout = "~/Views/Shared/_Layout2cols.cshtml"; }
+    else if (hlpConfig.SessionInfo.getAppRoleId() == valFLAG.FLAG_ROLE_CT) { Layout = "~/Views/Shared/_Layout2cols.cshtml"; }
+    else { Layout = "~/Views/Shared/_Layout.cshtml"; }
+    
+}
+@section includeBOTTOM {
+    @Scripts.Render("~/bundles/JSInputMask")
+}
+
+@{string vsClassBP_STS = "";}
+
+
+
+<div class="box box-info">
+    <div class="box-header">
+        <h3 class="box-title">Filter Data</h3>
+        <div class="box-tools">
+        </div>
+    </div><!-- /.box-header -->
+@using (Html.BeginForm("Indexreport", "LHStudent", FormMethod.Post))
+{
+    <div class="box-body table-responsive">
+            @{Html.RenderPartial("Filter_inputs");}
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="submit" id="btnSubmit" name="btnSubmit" class="btn btn-success btn-flat"> <i class="fa fa-bars"></i> View Report</button>
+                </div>
+            </div><!-- /.row -->
+			
+    </div><!-- /.box-body -->
+    <div class="box-footer">
+    </div><!-- /.box-footer -->
+}
+</div><!-- /.box -->
+
+@section scripts {
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        /*=========================================
+        INITIALIZE
+        =========================================*/
+        //doSearchAbleTable('#searchValue', '', '.SEARCHABLE_ROWS');
+        $("[data-mask]").inputmask(); //Optional if contains date field(s)
+        $("#FILTER_CLASSTYPE_ID").select2();
+        Select2ajaxfilter('#FILTER_CLASSROOM_ID', '@Url.Action("getClassroom", "Select2ajax")', '#FILTER_CLASSTYPE_ID', '', '');
+
+        /*=========================================
+        EVENTS
+        =========================================*/
+    });  //End $(document).ready
+</script>
+
+}

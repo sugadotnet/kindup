@@ -1,0 +1,34 @@
+﻿@model APPBASE.Models.LHStudentVM
+@using APPBASE.Helpers
+@using APPBASE.Svcbiz
+
+@{
+    ViewBag.Title = "Daftar LHS";
+    Layout = "~/Views/Shared/_LayoutPrintable.cshtml";
+}
+
+@section includeTOP {
+        <link href="@Url.Content("~/")Content/print/print.css" rel="stylesheet" type="text/css" />
+}
+
+@section includeBOTTOM {
+}
+
+@{ Html.RenderPartial("Reportlhsprint_data"); }
+
+
+@section scripts {
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        /*=========================================
+        INITIALIZE
+        =========================================*/
+
+        /*=========================================
+        EVENTS
+        =========================================*/
+    });  //End $(document).ready
+</script>
+
+}

@@ -1,0 +1,66 @@
+﻿@model APPBASE.Models.StudentVM
+@using APPBASE.Helpers
+@using APPBASE.Svcbiz
+
+@{string vsErrClass = "";}
+@{string vsDisableButton = "";}
+@{string vsDateFormat = "'alias': 'dd/mm/yyyy'";}
+
+<br />
+<div class="row">
+    <div class="col-xs-12">
+        <span class="pull-left">DATA ORANG TUA/WALI MURID</span>
+        <span class="pull-right"></span>
+    </div> <!-- ./ -->
+</div><!-- /.row -->
+<br />
+<div class="row">
+    <div class="col-xs-12">
+        <span class="pull-left"><u>AYAH KANDUNG/WALI</u></span>
+        <span class="pull-right"></span>
+    </div> <!-- ./ -->
+</div><!-- /.row -->
+
+<!-- ---------------------------------------------------------------- -->
+
+<div class="row">
+    <div class="col-xs-5">
+        <span class="pull-left indent">Nama</span>
+        <span class="pull-right">:</span>
+    </div> <!-- ./ -->
+    <div class="col-xs-7">
+        @Model.DETAIL.FTHR_NAME
+    </div> <!-- ./ -->
+</div><!-- /.row -->
+
+<div class="row">
+    <div class="col-xs-5">
+        <span class="pull-left indent">Tempat/Tgl. Lahir</span>
+        <span class="pull-right">:</span>
+    </div> <!-- ./ -->
+    <div class="col-xs-7">
+        @Model.DETAIL.FTHR_POB @if(Model.DETAIL.FTHR_DOB!=null){<span>/</span>} @hlpConvertionAndFormating.ConvertDateToStringDDMMMYYYYFmt(@Model.DETAIL.FTHR_DOB)
+    </div> <!-- ./ -->
+</div><!-- /.row -->
+
+<div class="row">
+    <div class="col-xs-5">
+        <span class="pull-left indent">Alamat</span>
+        <span class="pull-right">:</span>
+    </div> <!-- ./ -->
+    <div class="col-xs-7">
+        <div>@Model.DETAIL.FTHR_ADDR_STREET1</div>
+        <div>@Model.DETAIL.FTHR_ADDR_STREET2</div>
+        <div>@Model.DETAIL.FTHR_ADDR_CITY @Model.DETAIL.FTHR_ADDR_ZIP</div>
+    </div> <!-- ./ -->
+</div><!-- /.row -->
+
+<div class="row">
+    <div class="col-xs-5">
+        <span class="pull-left indent">No.Telp/HP</span>
+        <span class="pull-right">:</span>
+    </div> <!-- ./ -->
+    <div class="col-xs-7">
+        @Model.DETAIL.FTHR_HOMEPHONE @if(Model.DETAIL.FTHR_HOMEPHONE !=null ){<span>/</span>} @Model.DETAIL.FTHR_HOMEPHONE
+    </div> <!-- ./ -->
+</div><!-- /.row -->

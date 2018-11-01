@@ -1,0 +1,20 @@
+﻿@using (Html.BeginForm("Rekap", "Transaction_inspp", FormMethod.Post))
+{
+
+<div class="box box-info">
+    <div class="box-header">
+        <h3 class="box-title">Filter Rekap Transaksi</h3>
+    </div><!-- /.box-header -->
+    <div class="box-body">
+        <hr />
+        @{Html.RenderPartial("Rincian_Inputs_trnheader");}
+    </div><!-- /.box-body -->
+    <div class="box-footer">
+        <div class="row">
+            <div class="col-xs-12">
+                <button type="submit" class="btn btn-primary btn-flat">Tampilkan Data</button>
+            </div>
+        </div><!-- /.row -->
+    </div><!-- /.box-footer -->
+</div><!-- /.box -->
+}

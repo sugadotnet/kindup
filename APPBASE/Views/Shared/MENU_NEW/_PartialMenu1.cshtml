@@ -1,0 +1,108 @@
+﻿@using APPBASE.Helpers
+
+    <li class="active">
+        <a href="@Url.Action("Index", "Home")" class="bg-orange-soft">
+            <i class="fa fa-dashboard"></i> <span>DASHBOARD</span>
+        </a>
+    </li>
+
+<!-- 1 = SM	SCHOOL MASTER  -->
+
+<!-- SETTING -->
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-gear"></i> <span>SETTING</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="@Url.Action("Index", "Year")"><i class="fa fa-angle-double-right"></i> Tahun Ajaran</a></li>
+            <li><a href="@Url.Action("Details", "BranchHQ")"><i class="fa fa-angle-double-right"></i> Info Kantor Pusat</a></li>
+            <li><a href="@Url.Action("Index", "Branch")"><i class="fa fa-angle-double-right"></i> Daftar Cabang</a></li>
+            <li><a href="@Url.Action("Index", "Sentra")"><i class="fa fa-angle-double-right"></i> Daftar Sentra</a></li>
+            <li><a href="@Url.Action("Index", "Classroom")"><i class="fa fa-angle-double-right"></i> Kelompok Murid</a></li>
+            <li><a href="@Url.Action("ErrorDEV", "Error")"><i class="fa fa-angle-double-right"></i> Daftar Jabatan*</a></li>
+            <li><a href="@Url.Action("ErrorDEV", "Error")"><i class="fa fa-angle-double-right"></i> Daftar Penerimaan*</a></li>
+
+        </ul>
+    </li>
+
+<!-- ADMINISTRASI -->
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-paperclip"></i> <span>ADMINISTRASI</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="@Url.Action("Index", "Student")"><i class="fa fa-angle-double-right"></i> Data Siswa</a></li>
+            <li><a href="@Url.Action("Index", "Employee")"><i class="fa fa-angle-double-right"></i> Data Guru dan Pegawai</a></li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-money"></i> <span>PENERIMAAN</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="@Url.Action("ErrorDEV", "Error")"><i class="fa fa-angle-double-right"></i> SPP*</a></li>
+                    <li><a href="@Url.Action("ErrorDEV", "Error")"><i class="fa fa-angle-double-right"></i> Tabungan*</a></li>
+                    <li><a href="@Url.Action("ErrorDEV", "Error")"><i class="fa fa-angle-double-right"></i> Murid Baru*</a></li>
+                    <li><a href="@Url.Action("ErrorDEV", "Error")"><i class="fa fa-angle-double-right"></i> Kegiatan*</a></li>
+                    <li><a href="@Url.Action("ErrorDEV", "Error")"><i class="fa fa-angle-double-right"></i> lain lain*</a></li>
+                </ul>
+            </li>
+
+
+            <li><a href="@Url.Action("Index", "Announcement")"><i class="fa fa-angle-double-right"></i> Pengumuman</a></li>
+            <li><a href="@Url.Action("Index", "Photogallery")"><i class="fa fa-angle-double-right"></i> Galeri Foto</a></li>
+        </ul>
+    </li>
+
+<!-- AKADEMIK -->
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-book"></i> <span>AKADEMIK</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="@Url.Action("Index", "Callendar")"><i class="fa fa-angle-double-right"></i> Kalender Akademik</a></li>
+            <li><a href="@Url.Action("Index", "Theme")"><i class="fa fa-angle-double-right"></i> Tema dan Sub Tema</a></li>
+            <li><a href="@Url.Action("Index", "Promised")"><i class="fa fa-angle-double-right"></i> Promised</a></li>
+            <li><a href="@Url.Action("Index", "Skm")"><i class="fa fa-angle-double-right"></i> RPPM</a></li>
+            <li><a href="@Url.Action("Index", "Skh")"><i class="fa fa-angle-double-right"></i> RPPH</a></li>
+            <li><a href="@Url.Action("Index", "LHStudent")"><i class="fa fa-angle-double-right"></i> Laporan Harian Siswa</a></li>
+            <li><a href="@Url.Action("ErrorDEV", "Error")"><i class="fa fa-angle-double-right"></i> Laporan Semester*</a></li>
+        </ul>
+    </li>
+
+<!-- INFO SEKOLAH -->
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-lightbulb-o"></i> <span>INFO SEKOLAH</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="@Url.Action("Index", "Aboutus")"><i class="fa fa-angle-double-right"></i> Tentang Sekolah</a></li>
+            <li><a href="@Url.Action("Index", "Tatib")"><i class="fa fa-angle-double-right"></i> Tata Tertib Sekolah</a></li>
+            <li><a href="@Url.Action("Index", "Song")"><i class="fa fa-angle-double-right"></i> Lagu lagu</a></li>
+            <li><a href="@Url.Action("Index", "Doa")"><i class="fa fa-angle-double-right"></i> Daftar Doa</a></li>
+            <li><a href="@Url.Action("ErrorDEV", "Error")"><i class="fa fa-angle-double-right"></i> Foto Kegiatan*</a></li>
+            <li><a href="@Url.Action("ErrorDEV", "Error")"><i class="fa fa-angle-double-right"></i> Daftar Hadist*</a></li>
+        </ul>
+    </li>
+
+<!-- MANAJEMEN -->
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-tags"></i> <span>MANAJEMEN</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="@Url.Action("ErrorDEV", "Error")"><i class="fa fa-angle-double-right"></i> Menu Cetakan*</a></li>
+            <li><a href="@Url.Action("ErrorDEV", "Error")"><i class="fa fa-angle-double-right"></i> Menu Download*</a></li>
+            <li><a href="@Url.Action("Index", "Suggest")"><i class="fa fa-angle-double-right"></i> Saran Orang Tua</a></li>
+            <li><a href="@Url.Action("Index", "Warning")"><i class="fa fa-angle-double-right"></i> Teguran Pegawai</a></li>
+
+            <li><a href="@Url.Action("ErrorDEV", "Error")"><i class="fa fa-angle-double-right"></i> Akses - Pusat</a></li>
+            <li><a href="@Url.Action("ErrorDEV", "Error")"><i class="fa fa-angle-double-right"></i> Akses - Cabang</a></li>
+            <li><a href="@Url.Action("ErrorDEV", "Error")"><i class="fa fa-angle-double-right"></i> Akses - Orang Tua</a></li>
+        </ul>
+    </li>

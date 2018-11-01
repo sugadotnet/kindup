@@ -1,0 +1,37 @@
+﻿@using APPBASE.Helpers
+
+<!-- 2 = SA	SCHOOL ACCOUNTANT  -->
+
+<!-- ADMINISTRASI -->
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-paperclip"></i> <span>ADMINISTRASI</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="@Url.Action("Index", "Student")"><i class="fa fa-angle-double-right"></i> Data Siswa</a></li>
+            <li><a href="@Url.Action("Index", "Employee")"><i class="fa fa-angle-double-right"></i> Data Guru dan Pegawai</a></li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-money"></i> <span>PENERIMAAN</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="@Url.Action("ErrorDEV", "Error")"><i class="fa fa-angle-double-right"></i> SPP*</a></li>
+                    <li><a href="@Url.Action("ErrorDEV", "Error")"><i class="fa fa-angle-double-right"></i> Tabungan*</a></li>
+                    <li><a href="@Url.Action("ErrorDEV", "Error")"><i class="fa fa-angle-double-right"></i> Murid Baru*</a></li>
+                    <li><a href="@Url.Action("ErrorDEV", "Error")"><i class="fa fa-angle-double-right"></i> Kegiatan*</a></li>
+                    <li><a href="@Url.Action("ErrorDEV", "Error")"><i class="fa fa-angle-double-right"></i> Lain lain*</a></li>
+                </ul>
+            </li>
+            
+        </ul>
+    </li>
+
+<!-- AKADEMIK -->
+    <li><a href="@Url.Action("Index", "Callendar")"><i class="fa fa-angle-double-right"></i> KALENDER AKADEMIK</a></li>
+
+<!-- SETTING -->
+    <li><a href="@Url.Action("Index", "Branch")"><i class="fa fa-angle-double-right"></i> DAFTAR CABANG</a></li>
+    <li><a href="@Url.Action("ErrorDEV", "Error")"><i class="fa fa-angle-double-right"></i> DAFTAR PENERIMAAN*</a></li>

@@ -1,0 +1,190 @@
+﻿@model APPBASE.Models.SkhstudentVM
+@using APPBASE.Helpers
+
+@{string vsErrClass = "";}
+@{string vsDisableButton = "";}
+@{Boolean isShowDropdown = true;}
+@{string vsReadonlyTextboxKey = "Readonly";}
+@{string vsReadonlyTextbox = "";}
+@if (ViewBag.CRUD_type == hlpFlags_CRUDOption.CREATE) { vsReadonlyTextboxKey = ""; }
+@if ((ViewBag.CRUD_type == hlpFlags_CRUDOption.VIEW) || (ViewBag.CRUD_type == hlpFlags_CRUDOption.DELETE)) { vsDisableButton = "disabled"; vsReadonlyTextbox = "Readonly"; isShowDropdown = false; }
+@{string vsDateFormat = "'alias': 'dd/mm/yyyy'";}
+
+
+<div class="row">
+    <div class="col-sm-12 col-md-4">
+        <div class="row">
+            <div class="col-sm-12">
+                @if (ViewData.ModelState["WEEKNUM0"] != null) { vsErrClass = "has-error"; } else { vsErrClass = ""; }
+                <div class="form-group @vsErrClass">
+                    <label for="WEEKNUM">Week</label>
+                    <input type="number" id="WEEKNUM" name="DETAIL.WEEKNUM" value="@Html.DisplayFor(model => model.DETAIL.WEEKNUM)" class="form-control data-mask-integer"  @vsReadonlyTextbox />
+
+                    @if (ViewData.ModelState["WEEKNUM1"] != null)
+                    {
+                            <label class="control-label" for="inputError">
+                            <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("WEEKNUM1")
+                            </label>
+                    }
+                    @if (ViewData.ModelState["WEEKNUM2"] != null)
+                    {
+                            <label class="control-label" for="inputError">
+                            <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("WEEKNUM2")
+                            </label>
+                    }
+                </div> <!-- /.form-group -->
+            </div> <!-- /.col-xs-12 -->
+        </div><!-- /.row -->
+        <div class="row">
+            <div class="col-sm-12">
+                @if (ViewData.ModelState["DATEFROM0"] != null) { vsErrClass = "has-error"; } else { vsErrClass = ""; }
+                <div class="form-group @vsErrClass">
+                    <label for="DATEFROM">Date</label>
+                    <input type="text" id="DATEFROM" name="DETAIL.DATEFROM" value="@Html.DisplayFor(model => model.DETAIL.DATEFROM)" class="form-control" @vsReadonlyTextbox data-inputmask="@vsDateFormat" data-mask />
+
+            
+                    @if (ViewData.ModelState["DATEFROM1"] != null)
+                    {
+                            <label class="control-label" for="inputError">
+                            <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("DATEFROM1")
+                            </label>
+                    }
+                    @if (ViewData.ModelState["DATEFROM2"] != null)
+                    {
+                            <label class="control-label" for="inputError">
+                            <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("DATEFROM2")
+                            </label>
+                    }
+                </div> <!-- /.form-group -->
+            </div> <!-- /.col-xs-12 -->
+        </div><!-- /.row -->
+    </div> <!-- /.col-sm-12 col-md-4 -->
+
+    <div class="col-sm-12 col-md-8">
+        <div class="row">
+            @Html.HiddenFor(model => model.DETAIL.YEAR_ID, new { id = "YEAR_ID" })
+            <div class="col-xs-12">
+                @if (ViewData.ModelState["YEAR_ID0"] != null) { vsErrClass = "has-error"; } else { vsErrClass = ""; }
+                <div class="form-group @vsErrClass">
+                    <label for="YEAR_DESC">Pilih Tahun Ajaran</label>
+
+
+                    <div class="input-group input-group-sm">
+                        <input type="text" id="YEAR_DESC" name="DETAIL.YEAR_DESC" value="@Html.DisplayFor(model => model.DETAIL.YEAR_DESC)" class="form-control" readonly />
+                        <span class="input-group-btn">
+                            <button type="button" id="cmdLookupYEAR_ID" name="DETAIL.cmdLookupYEAR_ID" class="btn btn-info btn-flat" data-toggle="modal" data-target="#DialogLookup" @vsDisableButton><i class="fa fa-search"></i></button>
+                        </span>
+                    </div><!-- /input-group -->
+
+            
+                    @if (ViewData.ModelState["YEAR_ID1"] != null)
+                    {
+                            <label class="control-label" for="inputError">
+                            <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("YEAR_ID1")
+                            </label>
+                    }
+                    @if (ViewData.ModelState["YEAR_ID2"] != null)
+                    {
+                            <label class="control-label" for="inputError">
+                            <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("YEAR_ID2")
+                            </label>
+                    }
+                </div> <!-- /.form-group -->
+            </div> <!-- /.col-xs-12 -->
+        </div><!-- /.row -->
+        <div class="row">
+            @Html.HiddenFor(model => model.DETAIL.SEMESTER_ID, new { id = "SEMESTER_ID" })
+            <div class="col-xs-12">
+                @if (ViewData.ModelState["SEMESTER_ID0"] != null) { vsErrClass = "has-error"; } else { vsErrClass = ""; }
+                <div class="form-group @vsErrClass">
+                    <label for="SEMESTER_DESC">Pilih Semester</label>
+
+
+                    <div class="input-group input-group-sm">
+                        <input type="text" id="SEMESTER_DESC" name="DETAIL.SEMESTER_DESC" value="@Html.DisplayFor(model => model.DETAIL.SEMESTER_DESC)" class="form-control" readonly />
+                        <span class="input-group-btn">
+                            <button type="button" id="cmdLookupSEMESTER_ID" name="DETAIL.cmdLookupSEMESTER_ID" class="btn btn-info btn-flat" data-toggle="modal" data-target="#DialogLookup" @vsDisableButton><i class="fa fa-search"></i></button>
+                        </span>
+                    </div><!-- /input-group -->
+
+            
+                    @if (ViewData.ModelState["SEMESTER_ID1"] != null)
+                    {
+                            <label class="control-label" for="inputError">
+                            <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("SEMESTER_ID1")
+                            </label>
+                    }
+                    @if (ViewData.ModelState["SEMESTER_ID2"] != null)
+                    {
+                            <label class="control-label" for="inputError">
+                            <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("SEMESTER_ID2")
+                            </label>
+                    }
+                </div> <!-- /.form-group -->
+            </div> <!-- /.col-xs-12 -->
+        </div><!-- /.row -->
+        <div class="row">
+            @Html.HiddenFor(model => model.DETAIL.CLASSTYPE_ID, new { id = "CLASSTYPE_ID" })
+            <div class="col-xs-12">
+                @if (ViewData.ModelState["CLASSTYPE_ID0"] != null) { vsErrClass = "has-error"; } else { vsErrClass = ""; }
+                <div class="form-group @vsErrClass">
+                    <label for="CLASSTYPE_DESC">Pilih Kelas</label>
+
+
+                    <div class="input-group input-group-sm">
+                        <input type="text" id="CLASSTYPE_DESC" name="DETAIL.CLASSTYPE_DESC" value="@Html.DisplayFor(model => model.DETAIL.CLASSTYPE_DESC)" class="form-control" readonly />
+                        <span class="input-group-btn">
+                            <button type="button" id="cmdLookupCLASSTYPE_ID" name="DETAIL.cmdLookupCLASSTYPE_ID" class="btn btn-info btn-flat" data-toggle="modal" data-target="#DialogLookup" @vsDisableButton><i class="fa fa-search"></i></button>
+                        </span>
+                    </div><!-- /input-group -->
+
+            
+                    @if (ViewData.ModelState["CLASSTYPE_ID1"] != null)
+                    {
+                            <label class="control-label" for="inputError">
+                            <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("CLASSTYPE_ID1")
+                            </label>
+                    }
+                    @if (ViewData.ModelState["CLASSTYPE_ID2"] != null)
+                    {
+                            <label class="control-label" for="inputError">
+                            <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("CLASSTYPE_ID2")
+                            </label>
+                    }
+                </div> <!-- /.form-group -->
+            </div> <!-- /.col-xs-12 -->
+        </div><!-- /.row -->
+        <div class="row">
+            @Html.HiddenFor(model => model.DETAIL.THEME_ID, new { id = "THEME_ID" })
+            <div class="col-xs-12">
+                @if (ViewData.ModelState["THEME_ID0"] != null) { vsErrClass = "has-error"; } else { vsErrClass = ""; }
+                <div class="form-group @vsErrClass">
+                    <label for="THEME_DESC">Pilih Tema</label>
+                    <div class="input-group input-group-sm">
+                        <input type="text" id="THEME_DESC" name="DETAIL.THEME_DESC" value="@Html.DisplayFor(model => model.DETAIL.THEME_DESC)" class="form-control" readonly />
+                        <span class="input-group-btn">
+                            <button type="button" id="cmdLookupTHEME_ID" name="DETAIL.cmdLookupTHEME_ID" class="btn btn-info btn-flat" data-toggle="modal" data-target="#DialogLookup" @vsDisableButton><i class="fa fa-search"></i></button>
+                        </span>
+                    </div><!-- /input-group -->
+
+            
+                    @if (ViewData.ModelState["THEME_ID1"] != null)
+                    {
+                            <label class="control-label" for="inputError">
+                            <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("THEME_ID1")
+                            </label>
+                    }
+                    @if (ViewData.ModelState["THEME_ID2"] != null)
+                    {
+                            <label class="control-label" for="inputError">
+                            <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("THEME_ID2")
+                            </label>
+                    }
+                </div> <!-- /.form-group -->
+            </div> <!-- /.col-xs-12 -->
+        </div><!-- /.row -->
+
+
+    </div> <!-- /.col-sm-12 col-md-8 -->
+</div><!-- /.row -->
+

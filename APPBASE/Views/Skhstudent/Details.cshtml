@@ -1,0 +1,38 @@
+﻿@using APPBASE.Svcbiz
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section includeBOTTOM {
+    @Scripts.Render("~/bundles/JSInputMask")
+}
+
+@if (ViewBag.CRUDSavedOrDelete == valFLAG.FLAG_TRUE) {
+      Html.RenderPartial("_PartialConfirmSaved"); 
+}
+
+@using (Html.BeginForm("Index", "Skhstudent", FormMethod.Post, new { id = "frmGOTOIndex" })) {
+    <div class="col-sm-12 col-md-6">
+        @{Html.RenderPartial("Filter");}
+        @if (Model.LISTSKH != null) { Html.RenderPartial("Index_listskh"); }
+    </div> <!-- /.col-sm-12 col-md-6 -->
+}
+
+    <div class="col-sm-12 col-md-6">
+        @using (Html.BeginForm("Details", "SkhStudent", FormMethod.Post, new { id = "frmGOTODetails" }))
+        {
+            <input type="hidden" id="FILTER_ACTION_TYPE" name="FILTER_ACTION_TYPE" value="@Model.FILTER_ACTION_TYPE"/>
+            <input type="hidden" id="FILTER_SKH_ID" name="FILTER_SKH_ID" value="@Model.FILTER_SKH_ID"/>
+            <input type="hidden" id="FILTER_SKHSTUDENT_ID" name="FILTER_SKHSTUDENT_ID" value="@Model.FILTER_SKHSTUDENT_ID"/>
+            Html.RenderPartial("Details_");
+        }
+    </div> <!-- /.col-sm-12 col-md-6 -->
+
+<!-- Modal -->
+@{Html.RenderPartial("_PartialDialogLookup");}
+
+@section scripts {
+
+<!-- Modal -->
+@{Html.RenderPartial("_Events");}
+
+}

@@ -1,0 +1,13 @@
+﻿@using APPBASE.Helpers
+
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-bars"></i> <span>HAK AKSES</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="@Url.Action("Index", "User")"><i class="fa fa-angle-double-right"></i> User Pusat</a></li>
+            <li><a href="@Url.Action("Index", "Userbranch")"><i class="fa fa-angle-double-right"></i> User Cabang</a></li>
+            <li><a href="@Url.Action("Index", "Userparent")"><i class="fa fa-angle-double-right"></i> User Parent</a></li>
+        </ul>
+    </li>

@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Proses Pembayaran Pendaftaran Calon Siswa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section includeBOTTOM {
+    @Scripts.Render("~/bundles/JSInputMask")
+}
+
+
+<div class="row">
+    <div class="col-sm-12 col-md-5">
+        @{Html.RenderPartial("Create_input");}        
+    </div> <!-- End col -->
+    <div class="col-sm-12 col-md-7">
+        @{Html.RenderPartial("Create_hist");}        
+    </div> <!-- End col -->
+</div> <!-- End row -->
+
+
+
+
+<!-- Modal -->
+@{Html.RenderPartial("_PartialDialogLookup");}
+
+
+@section scripts {
+
+<!-- Modal -->
+@{Html.RenderPartial("_Events");}
+
+}

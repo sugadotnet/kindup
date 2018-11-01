@@ -1,0 +1,19 @@
+﻿@using APPBASE.Helpers
+
+            <li style="display:none;"><a href="@Url.Action("Index", "Callendar")"><i class="fa fa-angle-double-right"></i> Kalender Akademik</a></li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-bars"></i> <span>Laporan Harian</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="@Url.Action("Index", "LHStudent")"><i class="fa fa-angle-double-right"></i> Laporan Harian Siswa</a></li>
+                    <li><a href="@Url.Action("Indexreport", "LHStudent")"><i class="fa fa-angle-double-right"></i> Daftar LHS</a></li>
+                </ul>
+            </li>
+
+            <li><a href="@Url.Action("ErrorDEV", "Error")"><i class="fa fa-angle-double-right"></i> Laporan Semester</a></li>
+            <li><a href="@Url.Action("Index", "Skm")"><i class="fa fa-angle-double-right"></i> RPPM</a></li>
+            <li><a href="@Url.Action("Index", "Skh")"><i class="fa fa-angle-double-right"></i> RPPH</a></li>
+

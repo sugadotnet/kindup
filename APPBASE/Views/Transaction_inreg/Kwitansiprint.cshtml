@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Kwitansi Pembayaran Pendaftaran";
+    Layout = "~/Views/Shared/_LayoutPrintable.cshtml";
+}
+
+@section includeTOP {
+    <!-- csslayout -->
+    <link href="@Url.Content("~/")Content/print_kwitansi.css" rel="stylesheet" type="text/css" />
+}
+
+@{Html.RenderPartial("Kwitansiprint_data");}
+
+<br /><br /><br /><br />
+<div class="no-print"><a href="@Url.Action("Index", "Transaction_inreg")" >Selesai</a></div>
+
+@section scripts {
+
+<script type="text/javascript">
+    window.print();
+</script>
+
+}

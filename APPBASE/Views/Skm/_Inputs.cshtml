@@ -1,0 +1,72 @@
+﻿@model APPBASE.Models.SkmVM
+@using APPBASE.Helpers
+
+@{string vsErrClass = "";}
+@{string vsDisableButton = "";}
+@{Boolean isShowDropdown = true;}
+@{string vsReadonlyTextboxKey = "Readonly";}
+@{string vsReadonlyTextbox = "";}
+@if (ViewBag.CRUD_type == hlpFlags_CRUDOption.CREATE) { vsReadonlyTextboxKey = ""; }
+@if ((ViewBag.CRUD_type == hlpFlags_CRUDOption.VIEW) || (ViewBag.CRUD_type == hlpFlags_CRUDOption.DELETE)) { vsDisableButton = "disabled"; vsReadonlyTextbox = "Readonly"; isShowDropdown = false; }
+@{string vsDateFormat = "'alias': 'dd/mm/yyyy'";}
+
+<div class="row">
+    <div class="col-sm-12">
+        @{Html.RenderPartial("_Inputs_config");}
+    </div> <!-- /.col-sm-12 -->
+</div><!-- /.row -->
+<hr />
+<div class="row">
+    @Html.HiddenFor(model => model.DETAIL.EVALUATION_ID, new { id = "EVALUATION_ID" })
+    <div class="col-xs-12">
+        @if (ViewData.ModelState["EVALUATION_ID0"] != null) { vsErrClass = "has-error"; } else { vsErrClass = ""; }
+        <div class="form-group @vsErrClass">
+            <label for="EVALUATION_DESC">Jenis Penilaian</label>
+
+
+            <div class="input-group input-group-sm">
+                <input type="text" id="EVALUATION_DESC" name="DETAIL.EVALUATION_DESC" value="@Html.DisplayFor(model => model.DETAIL.EVALUATION_DESC)" class="form-control" @vsReadonlyTextbox />
+                <span class="input-group-btn">
+                    <button type="button" id="cmdLookupEVALUATION_ID" name="DETAIL.cmdLookupEVALUATION_ID" class="btn btn-info btn-flat" data-toggle="modal" data-target="#DialogLookup" @vsDisableButton><i class="fa fa-search"></i></button>
+                </span>
+            </div><!-- /input-group -->
+
+            
+            @if (ViewData.ModelState["EVALUATION_ID1"] != null)
+            {
+                    <label class="control-label" for="inputError">
+                    <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("EVALUATION_ID1")
+                    </label>
+            }
+            @if (ViewData.ModelState["EVALUATION_ID2"] != null)
+            {
+                    <label class="control-label" for="inputError">
+                    <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("EVALUATION_ID2")
+                    </label>
+            }
+        </div> <!-- /.form-group -->
+    </div> <!-- /.col-xs-12 -->
+</div><!-- /.row -->
+<div class="row">
+    <div class="col-xs-12">
+        @if (ViewData.ModelState["SKM_DESC0"] != null) { vsErrClass = "has-error"; } else { vsErrClass = ""; }
+        <div class="form-group @vsErrClass">
+            <label for="SKM_DESC">Deskripsi</label>
+            <textarea id="SKM_DESC" name="DETAIL.SKM_DESC" class="form-control" maxlength="500" @vsReadonlyTextbox>@Html.DisplayFor(model => model.DETAIL.SKM_DESC)</textarea>
+
+
+            @if (ViewData.ModelState["SKM_DESC1"] != null)
+            {
+                    <label class="control-label" for="inputError">
+                    <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("SKM_DESC1")
+                    </label>
+            }
+            @if (ViewData.ModelState["SKM_DESC2"] != null)
+            {
+                    <label class="control-label" for="inputError">
+                    <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("SKM_DESC2")
+                    </label>
+            }
+        </div> <!-- /.form-group -->
+    </div> <!-- /.col-xs-12 -->
+</div><!-- /.row -->

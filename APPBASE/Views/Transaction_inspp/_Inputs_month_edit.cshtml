@@ -1,0 +1,71 @@
+﻿@model APPBASE.Models.Transaction_indetailVM
+@using APPBASE.Helpers
+
+@{string vsErrClass = "";}
+@{string vsDisableButton = "";}
+@{Boolean isShowDropdown = true;}
+@{string vsReadonlyTextboxKey = "Readonly";}
+@{string vsReadonlyTextbox = "";}
+@if (ViewBag.CRUD_type == hlpFlags_CRUDOption.CREATE) { vsReadonlyTextboxKey = ""; }
+@if ((ViewBag.CRUD_type == hlpFlags_CRUDOption.VIEW) || (ViewBag.CRUD_type == hlpFlags_CRUDOption.DELETE)) { vsDisableButton = "disabled"; vsReadonlyTextbox = "Readonly"; isShowDropdown = false; }
+@{string vsDateFormat = "'alias': 'dd/mm/yyyy'";}
+
+<div class="row">
+    <div class="col-sm-12 col-md-6">
+        @if (ViewData.ModelState["MONTH10"] != null) { vsErrClass = "has-error"; } else { vsErrClass = ""; }
+        <div class="form-group @vsErrClass">
+            <label for="MONTH1">Dari Bulan</label>
+            <select id="MONTH1" name="MONTH1" class="form-control select2" data-placeholder="Select MONTH1" style="width: 100%;" @vsReadonlyTextbox>
+                <option selected value=""></option>
+                @foreach (var item in ViewBag.MONTHS)
+                {
+
+                    if (Model.MONTH1 == item.ID) {<option selected value="@item.ID">@item.MONTH_SHORTDESC</option> }
+                    else {<option value="@item.ID">@item.MONTH_SHORTDESC</option> }
+                }
+            </select>
+
+            @if (ViewData.ModelState["MONTH11"] != null)
+            {
+                    <label class="control-label" for="inputError">
+                    <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("MONTH11")
+                    </label>
+            }
+            @if (ViewData.ModelState["MONTH12"] != null)
+            {
+                    <label class="control-label" for="inputError">
+                    <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("MONTH12")
+                    </label>
+            }
+        </div> <!-- /.form-group -->
+    </div> <!-- /.col-sm-12 col-md-6 -->
+
+    <div class="col-sm-12 col-md-6">
+        @if (ViewData.ModelState["MONTH20"] != null) { vsErrClass = "has-error"; } else { vsErrClass = ""; }
+        <div class="form-group @vsErrClass">
+            <label for="MONTH2">Sampai bulan</label>
+            <select id="MONTH2" name="MONTH2" class="form-control select2" data-placeholder="Select MONTH2" style="width: 100%;" @vsReadonlyTextbox>
+                <option selected value=""></option>
+                @foreach (var item in ViewBag.MONTHS)
+                {
+
+                    if (Model.MONTH2 == item.ID) {<option selected value="@item.ID">@item.MONTH_SHORTDESC</option> }
+                    else {<option value="@item.ID">@item.MONTH_SHORTDESC</option> }
+                }
+            </select>
+
+            @if (ViewData.ModelState["MONTH21"] != null)
+            {
+                    <label class="control-label" for="inputError">
+                    <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("MONTH21")
+                    </label>
+            }
+            @if (ViewData.ModelState["MONTH22"] != null)
+            {
+                    <label class="control-label" for="inputError">
+                    <i class="fa fa-times-circle-o"></i> @Html.ValidationMessage("MONTH22")
+                    </label>
+            }
+        </div> <!-- /.form-group -->
+    </div> <!-- /.col-sm-12 col-md-6 -->
+</div><!-- /.row -->

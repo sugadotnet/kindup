@@ -1,0 +1,25 @@
+﻿<script type="text/javascript">
+    $(document).ready(function () {
+        /*=========================================
+        INITIALIZE
+        =========================================*/
+        //Command LookUp [USERNAME_ID]
+        $("#cmdLookupUSERNAME_ID").click(function () {
+            var vaSearchValue = new Array();
+            vaSearchValue[0] = "";
+            //            vaSearchValue[1] = "Data array 2";
+            //            vaSearchValue[2] = "Data array 3";
+            var vaTargetTag = new Array();
+            vaTargetTag[0] = 'USERNAME_ID'; //ID
+            vaTargetTag[1] = '';   //CD
+            vaTargetTag[2] = 'TEACHER_DISPLAY_NAME'; //DESC
+            showLookup('Lookup/ShowUserbranchteacher', '', vaSearchValue, vaTargetTag);
+        }); //End  $("#btnLookup").click
+
+        /*=========================================
+        EVENTS
+        =========================================*/
+
+    }); //End $(document).ready
+</script>
+
