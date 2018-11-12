@@ -46,3 +46,5 @@ repo: https://github.com/sugadotnet/kindup
 
 # comments
 disqus_shortname: "arinsuga"
+
+theme: jekyll-theme-cayman
